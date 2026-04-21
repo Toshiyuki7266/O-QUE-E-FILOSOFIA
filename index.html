@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação Acadêmica: Caio Prado Jr.</title>
+    <style>
+        :root {
+            --bg-dark: #0a0f1d;
+            --slide-bg: #111827;
+            --accent: #38bdf8;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --card-inner: #1e293b;
+            --border: rgba(56, 189, 248, 0.3);
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            overflow: hidden; font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark); color: var(--text-primary);
+        }
+
+        .presentation-container {
+            position: relative; height: 100vh; width: 100vw;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .slide {
+            position: absolute; width: 96%; height: 94vh;
+            background: var(--slide-bg); border-radius: 12px;
+            padding: 20px 30px; box-shadow: 0 0 50px rgba(0,0,0,0.9);
+            display: none; flex-direction: column;
+            border: 1px solid var(--border); cursor: pointer;
+            animation: slideZoom 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-sizing: border-box;
+        }
+
+        @keyframes slideZoom {
+            from { opacity: 0; transform: scale(1.05) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .slide.active { display: flex; }
+
+        header {
+            display: flex; justify-content: space-between; align-items: flex-end;
+            border-bottom: 2px solid var(--accent); margin-bottom: 15px; padding-bottom: 8px;
+        }
+
+        h1 { color: var(--accent); font-size: 2.4rem; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        .sub-header { color: var(--text-secondary); font-size: 1.2rem; font-weight: bold; }
+
+        .main-grid {
+            display: grid; grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 15px; flex-grow: 1; height: 100%;
+        }
+
+        .col { display: flex; flex-direction: column; gap: 12px; height: 100%; }
+
+        .info-card {
+            background: var(--card-inner); padding: 20px; border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.05); flex-grow: 1;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+
+        .info-card h3 { 
+            color: var(--accent); margin: 0 0 12px 0; font-size: 1.3rem; 
+            text-transform: uppercase; border-bottom: 1px solid var(--border); padding-bottom: 5px;
+        }
+        
+        .info-card p, .info-card li { 
+            font-size: 1.15rem; line-height: 1.6; margin: 0; text-align: justify; 
+            color: #cbd5e1;
+        }
+
+        .image-box {
+            width: 100%; 
+            min-height: 350px; /* Aumentado significativamente de 220px para 350px */
+            background: #000; 
+            border-radius: 6px;
+            border: 1px solid var(--border); 
+            background-size: cover; 
+            background-position: center;
+            flex-grow: 1.5; /* Dá preferência de espaço para a imagem crescer */
+        }
+
+        .banner-quote {
+            grid-column: 1 / -1; background: rgba(56, 189, 248, 0.08);
+            padding: 18px; border-radius: 6px; font-style: italic;
+            border: 1px solid var(--border); text-align: center; font-size: 1.2rem;
+            margin-top: 10px; font-weight: 500;
+        }
+
+        .controls { position: fixed; bottom: 20px; right: 30px; display: flex; gap: 10px; z-index: 100; }
+        button {
+            background: var(--accent); color: #000; border: none;
+            padding: 10px 25px; border-radius: 4px; font-weight: bold;
+            cursor: pointer; font-size: 0.9rem; text-transform: uppercase;
+            transition: background 0.3s;
+        }
+        button:hover { background: #0284c7; color: #fff; }
+
+        .prog-bar { position: fixed; top: 0; left: 0; height: 6px; background: var(--accent); transition: width 0.4s; z-index: 101;}
+    </style>
+</head>
+<body>
+
+    <div class="prog-bar" id="pb"></div>
+
+    <div class="presentation-container" id="presentation">
+        
+        <div class="slide active">
+            <header><h1>O Que é Filosofia?</h1><span class="sub-header">Caio Prado Jr. (1981)</span></header>
+            <div class="main-grid">
+                <div class="col">
+                    <div class="image-box" style="background-image: url('public/slide1.png')"></div>
+                    <div class="info-card">
+                        <h3>O Problema do Objeto</h3>
+                        <p>A filosofia historicamente enfrenta uma enorme vagueza em seus conceitos. Essa imprecisão afasta o público e gera posições contraditórias que variam radicalmente conforme o autor. Caio Prado Jr. defende que é absolutamente necessário determinar seu objeto último para fundamentá-la e poupar a humanidade de esforços intelectuais inúteis.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="info-card">
+                        <h3>Mitos e Desmistificação</h3>
+                        <p>O autor rejeita enfaticamente a visão da filosofia como mera "ginástica do pensamento" — um exercício mental vazio, sem finalidade prática ou impacto social. Embora a filosofia muitas vezes se aproprie de uma forma literária e abstrata, seu fundo inegociável deve ser sempre a produção e validação do conhecimento concreto.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Ressonância Humana</h3>
+                        <p>A especulação filosófica só encontra eco e sobrevive através dos séculos porque abriga questões que estão intimamente ligadas a interesses, dores e aspirações humanas profundas. A filosofia não flutua no vazio; ela responde a demandas reais do desenvolvimento material e social do homem.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="info-card">
+                        <h3>A Tarefa Preliminar</h3>
+                        <p>Para Caio Prado Jr., determinar um denominador comum que orienta a especulação humana de forma muitas vezes inconsciente é a tarefa primordial. Apenas identificando o que une as diversas correntes de pensamento, pode-se fundamentar a Filosofia como uma disciplina à parte, com rigor comparável ao das ciências empíricas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <header><h1>A Demarcação do Saber</h1><span class="sub-header">Conhecimento de Segundo Grau</span></header>
+            <div class="main-grid">
+                <div class="col">
+                    <div class="info-card">
+                        <h3>Conhecimento Sistematizado</h3>
+                        <p>A Ciência atua no primeiro grau: é o conhecimento sistematizado, testado e intencionalmente elaborado sobre os fatos da natureza e da sociedade. Ela se distingue do saber vulgar cotidiano justamente por sua organização metódica, rigor lógico e capacidade de previsão e generalização em níveis elevados da realidade.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="info-card">
+                        <h3>O Diferencial Filosófico</h3>
+                        <p>A filosofia, diferentemente do que pregam os metafísicos, não é uma "superciência" nem um simples prolongamento da física. Seu objeto legítimo e exclusivo é o <strong>Conhecimento do Conhecimento</strong>. Ela atua em segundo grau: é uma análise estrutural e reflexiva sobre o próprio ato de conhecer, investigando como o cérebro e a sociedade elaboram a ciência.</p>
+                    </div>
+                    <div class="image-box" style="background-image: url('public/slide2.png')"></div>
+                </div>
+                <div class="col">
+                    <div class="info-card">
+                        <h3>Marcha da Generalização</h3>
+                        <p>A história das ciências mostra um progresso incessante em direção a conceitos cada vez mais abrangentes. Partimos de fatos isolados para chegar a sistemas teóricos altamente inclusivos, que tentam cobrir toda a realidade universal. A filosofia acompanha essa marcha, analisando criticamente as sínteses que as ciências produzem.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <header><h1>A Inversão Idealista</h1><span class="sub-header">A Armadilha da Gramática</span></header>
+            <div class="main-grid">
+                <div class="col">
+                    <div class="image-box" style="background-image: url('public/slide3.png')"></div>
+                    <div class="info-card">
+                        <h3>A Modelagem Verbal</h3>
+                        <p>Nossa concepção do Universo é formatada e, frequentemente, limitada por nossas estruturas verbais. O realismo ingênuo é enganado pela linguagem: enxergamos a realidade através de formas gramaticais pré-concebidas, confundindo a forma como falamos com a forma como o universo físico de fato opera.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="info-card">
+                        <h3>A Inversão de Engels</h3>
+                        <p>Caio Prado resgata a crítica de Friedrich Engels: primeiro, a mente humana cria o conceito abstrato a partir da observação do objeto material; depois, a mente sofre uma ilusão e inverte o processo. Passa a acreditar que o "conceito" é a verdade primária e passa a medir o objeto real pela sua própria cópia abstrata.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Substancialização</h3>
+                        <p>A gramática baseada na relação sujeito-predicado nos condiciona a projetar substantivos como se fossem "coisas" tangíveis e adjetivos como se tivessem existência independente no mundo externo. Transforma-se o 'belo' na entidade 'Beleza', apagando e ignorando o complexo processo mental humano por trás dessa abstração.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="info-card">
+                        <h3>Pseudoconceitos</h3>
+                        <p>Como consequência dessa armadilha verbal, surgem os pseudoconceitos. Termos utilitários como "Matéria", "Espaço" e "Tempo" são reificados e transformam-se em entidades absolutas e místicas por força dessa confusão histórica entre a esfera subjetiva (mente humana) e a objetiva (dinâmica do universo).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <header><h1>A Crítica à Metafísica</h1><span class="sub-header">A Herança de Aristóteles</span></header>
+            <div class="main-grid">
+                <div class="col">
+                    <div class="info-card">
+                        <h3>A Confusão de Esferas</h3>
+                        <p>Ao tentar superar o idealismo de Platão (que separava o mundo das ideias do mundo sensível), Aristóteles acabou eliminando as fronteiras de forma equivocada. Ele fundiu o objeto material do conhecimento com o próprio conhecimento como objeto, gerando um nó teórico que aprisionou o pensamento.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="info-card">
+                        <h3>A Potencialidade e a Forma</h3>
+                        <p>Ao postular que as "formas" (conceitos) já estavam ocultas e integradas nas "coisas" como potencialidade, Aristóteles consagrou de vez a inversão idealista que viciou o pensamento científico e filosófico ocidental pelos milênios seguintes, subordinando a matéria ao conceito lógico.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Enrijecimento do Saber</h3>
+                        <p>A ciência escolástica e medieval marcou passo durante séculos ao focar obcecamente em deduções lógicas estritas e na construção de silogismos verbais, em vez de investir no empirismo e na observação direta e transformadora dos fatos naturais e sociais.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="image-box" style="background-image: url('public/slide4.png')"></div>
+                    <div class="info-card">
+                        <h3>O Logicismo Vulgar</h3>
+                        <p>Até hoje sofremos os efeitos disso. A expressão coloquial "é lógico" passou a ser usada indiscriminadamente como sinônimo de "verdade empírica". O homem comum passou a confundir a simples articulação coerente de regras verbais com a verificação e funcionamento do mundo real e material.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <header><h1>A Práxis Humana</h1><span class="sub-header">Dialética e Sociedade</span></header>
+            <div class="main-grid">
+                <div class="col">
+                    <div class="info-card">
+                        <h3>Agente e Paciente</h3>
+                        <p>Na dinâmica dialética dos fatos sociais, o homem não é mero espectador. Ele atua simultaneamente como o sujeito ativo que determina a ação histórica e como o objeto que é constantemente determinado pelas relações de produção e forças sociais que ele próprio construiu no passado.</p>
+                    </div>
+                    <div class="image-box" style="background-image: url('public/slide5.png')"></div>
+                </div>
+                <div class="col">
+                    <div class="info-card">
+                        <h3>A Solução de Marx</h3>
+                        <p>Foi Karl Marx quem resolveu o antigo impasse da filosofia ao ligar de forma indissolúvel e dialética o pensamento abstrato à ação concreta. Marx superou o materialismo puramente mecanicista, concebendo o conhecimento autêntico como um amálgama vivo, composto de teoria crítica e prática transformadora.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>O Conhecimento Participante</h3>
+                        <p>Especialmente nas ciências humanas, o conhecimento não apenas descreve de fora: o saber elaborado, ao ser internalizado pela sociedade, passa a integrar-se aos próprios fatos sociais. O conhecimento se torna um agente material, configurando uma realidade social inédita e movendo a história.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="info-card">
+                        <h3>A Transformação do Mundo</h3>
+                        <p>A conclusão política e teórica é incisiva: a verdadeira filosofia contemporânea não deve mais se contentar em apenas contemplar ou interpretar passivamente a realidade. Seu papel estrutural é o de orientar ativamente a transformação (de viés socialista e materialista) do mundo através de uma práxis consciente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <header><h1>Conclusão: O Devenir</h1><span class="sub-header">Senhor e Possuidor do Universo</span></header>
+            <div class="main-grid">
+                <div class="col">
+                    <div class="info-card">
+                        <h3>Emergência Racional</h3>
+                        <p>No desenrolar do processo histórico e evolutivo, o Homem gradativamente destaca-se da restrição puramente biológica da natureza e se consagra como um Ser genuinamente racional. Ele atinge isso por meio do trabalho e ao transformar experiências materiais caóticas em conhecimento consciente e acumulado através das gerações.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="info-card">
+                        <h3>Domínio e Liberdade</h3>
+                        <p>Graças ao seu privilégio único de valer-se do conhecimento científico do passado, o homem caminha incessantemente para se tornar, como formulou a célebre predição iluminista de Descartes, verdadeiro "senhor e possuidor da natureza", dominando as leis físicas a seu favor.</p>
+                    </div>
+                    <div class="image-box" style="background-image: url('public/slide6.png')"></div>
+                </div>
+                <div class="col">
+                    <div class="info-card">
+                        <h3>O Ciclo da Prática</h3>
+                        <p>A Filosofia, finalmente desmistificada por Caio Prado Jr., se consolida como a disciplina que sistematiza a dialética humana: partimos da prática material, subimos à formulação do conhecimento abstrato e garantimos o retorno vital desse conhecimento à prática para transformar o amanhã.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="banner-quote">"O objeto definitivo e desmistificado da Filosofia seria o fato do Conhecimento considerado em toda sua amplitude lógica e prática..."</div>
+        </div>
+
+    </div>
+
+    <div class="controls">
+        <button id="prevBtn">Anterior</button>
+        <button id="nextBtn">Próximo</button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const pb = document.getElementById('pb');
+        let current = 0;
+
+        function update() {
+            slides.forEach((s, i) => s.classList.toggle('active', i === current));
+            pb.style.width = ((current + 1) / slides.length * 100) + '%';
+        }
+
+        document.getElementById('nextBtn').onclick = (e) => { e.stopPropagation(); current = (current + 1) % slides.length; update(); };
+        document.getElementById('prevBtn').onclick = (e) => { e.stopPropagation(); current = (current - 1 + slides.length) % slides.length; update(); };
+        document.getElementById('presentation').onclick = () => { current = (current + 1) % slides.length; update(); };
+        
+        document.onkeydown = (e) => {
+            if (e.key === "ArrowRight") { current = (current + 1) % slides.length; update(); }
+            if (e.key === "ArrowLeft") { current = (current - 1 + slides.length) % slides.length; update(); }
+        };
+        update();
+    </script>
+</body>
+</html>
